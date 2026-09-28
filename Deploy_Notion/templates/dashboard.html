@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="topo">
+      <h3> <img src="{{ url_for('static', filename ='images.png') }}">Deploy Notion</h3>    
+        
+       
+        <details class="meu-details">
+            <summary>Olá {{ current_user.nome.split()[0] }}</summary>
+            
+            <p onclick="botão()">sair</p>
+
+            <dialog>
+                <h3>Você tem certeza que quer sair da sua conta?</h3>
+               
+                <button onclick="cancelar()" class="cancelar">Cancelar</button> 
+                <button class="sair"><a href="{{ url_for('logout') }}">Sim</a></button>
+
+                
+            </dialog>
+        </details>
+</div>
+
+
+{% if not anotações['publicações'] %}
+<div class="sem_notas">
+    
+    <img src="{{ url_for('static', filename ='logo2.png') }}"
+    width="100px"
+    height="100px">
+    <h1>Sem Anotações!!</h1>
+    <h3>Toque no "+" para adicionar uma anotação</h3>
+    
+</div>
+
+
+{% else %}
+<h3 style="padding: 15px;">Suas anotações: </h3>
+<div class="anotações">
+    
+      
+        {% for notas in anotações['publicações'] %}
+        
+        <div class="nota">
+        {% if notas.título and notas.texto|length > 80 %}
+        <h2>{{ notas.título[:14] }}...</h2>
+        <p>{{ notas.texto[:140] }}...</p>
+        {% else %}
+        <h2>{{ notas.título }}</h2>
+        <p>{{ notas.texto }}</p>
+        {% endif %}
+
+        <div class="ações">
+            <p class="apagar" style="color: red;">apagar</p>
+
+             <dialog class="apagar_nota">
+
+                <h3>Quer mesmo apagar a anotação "{{ notas.título[:15] }}" ? </h3>
+
+                <form action="{{ url_for('apagar', id=notas.id) }}" method="post">
+                    
+                    <button class="cancelar_apagar" type="button">Cancelar</button>
+                    <button type="submit" style="color: red;">Sim</button>
+                </form>
+
+             </dialog>
+
+            <a href="{{ url_for('editar', id=notas.id) }}" class="editar">editar</a>
+        </div>
+
+        </div>
+
+        {% endfor %}
+  
+
+</div>
+{% endif %} 
+
+   <a class="nova_folha" href="{{ url_for('folha') }}"></a>
+
+
+{% endblock %}

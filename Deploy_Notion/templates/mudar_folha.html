@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form method="post" class="folha">
+    {{ form.csrf_token }}
+    {{ form.hidden_tag() }}
+        
+    {{ form.salvar(class='botão-salvar') }} 
+    
+    <h2>{{ form.título( class='título',
+        onkeydown="if (event.key === 'Enter') event.preventDefault()"
+        ) 
+    }} </h2>
+    
+    {{ form.texto() }}
+    
+</form>
+
+
+{% endblock %}

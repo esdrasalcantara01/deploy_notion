@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="logo">
+        <h1> <img src="{{ url_for('static', filename ='images.png') }}">Deploy Notion</h1>
+    </div>
+
+<div class="boas-vindas">
+    
+        <h1>Bem-vindo ao Deploy Notion!!</h1>
+        <h2>Faça suas anotações em um único lugar!</h2>
+        <div class="cadastro">
+           
+            
+             <img src="{{ url_for('static', filename = 'myGIF.gif') }}">
+            
+            
+            
+            <form method="post" class="form1">
+                {{ form1.csrf_token }}
+                {{ form1.hidden_tag() }}
+
+                <p>Seu Nome: </p>
+                {{ form1.nome(placeholder = "nome", class="input_form") }}
+
+                <p>Seu E-mail: </p>
+                {{ form1.email(placeholder = "E-mail", class="input_form") }}
+
+                <p>Sua senha: </p>
+                <div class="campo-senha">
+                    
+                    {{ form1.senha(placeholder = "senha, ", class="input_form") }}
+                    <button type="button" class="olho">👁</button>
+                    
+                </div>
+
+                
+                <dialog id="dialogo-erro" class="dialog-alert">
+
+                  <p id="mensagem-erro"></p>
+
+                  <button type="button" onclick="fecharDialogo()">Fechar</button>
+
+               </dialog>
+
+
+                {% if erro1 or erro2 %}
+                  <script>
+                  const dialogo = document.getElementById('dialogo-erro');
+                  const mensagem = document.getElementById('mensagem-erro');
+
+                  mensagem.textContent = "{{ erro1 or erro2 }}";
+
+                  dialogo.showModal();
+                  </script>
+                {% endif %}
+                
+
+                {{ form1.enviar(class="cadastro-botão")}}
+                <p>já tem uma conta? 
+                    <a onclick="login()" style="color: black; cursor: pointer;">Fazer Login</a></p>
+            </form>
+            
+
+            <form method="post" class="form2">
+                {{ form2.csrf_token }}
+                {{ form2.hidden_tag() }}
+
+                <p>Seu Nome: </p>
+                {{ form2.nome(placeholder = "nome", class="input_form") }}
+
+
+                <p>Sua senha: </p>
+               <div class="campo-senha">
+                   
+                    {{ form2.senha(placeholder = "senha", class="input_form") }}
+                    <button type="button" class="olho">👁</button>
+               </div>
+                
+
+                {{ form2.enviar(class="cadastro-botão")}}
+
+                <p>Ainda não tem uma conta?<br>
+                    <a onclick="cadastro()" style="color: black; cursor: pointer;">Cadastre-se</a></p>
+            </form>
+            
+        </div>
+</div>
+
+{% endblock %}
