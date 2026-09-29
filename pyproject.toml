@@ -1,0 +1,2 @@
+[tool.vercel]
+entrypoint = "Deploy_Notion:app"
