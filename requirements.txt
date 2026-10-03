@@ -20,8 +20,9 @@ livereload==2.7.1
 Mako==1.4.1
 MarkupSafe==3.0.3
 mysql-connector-python==26.7.0
+psycopg2==2.9.13
 python-dotenv==1.2.3
-SQLAlchemy
+SQLAlchemy==2.0.52
 tornado==6.5.10
 typing_extensions==4.16.0
 Werkzeug==3.1.8
