@@ -1,20 +1,34 @@
-function login (){
+
+
+function cadastro (){
+
+    const imagem = document.querySelector(".cadastro img");
 
     if (window.innerWidth <= 1220){
-    document.querySelector(".cadastro img").style.left = "310px";
+    imagem.style.left = "310px";
     }
 
-    else {
+
+    else 
      if (window.innerWidth > 1220){
-     document.querySelector(".cadastro img").style.left = "343px";
+     imagem.style.left = "298px";
     }
-        
+       
+
+    if (window.innerWidth >= 600){
+    imagem.style.left = "230px";
+
     }
 
 }
 
 
-function cadastro (){
+cadastro();
+
+window.addEventListener("resize", cadastro);
+
+
+function login (){
 
  document.querySelector(".cadastro img").style.left = "0px";
 }
