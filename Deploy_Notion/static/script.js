@@ -1,8 +1,9 @@
 
-
 function cadastro (){
 
     const imagem = document.querySelector(".cadastro img");
+
+    if (!imagem) return;
 
     if (window.innerWidth <= 1220){
     imagem.style.left = "310px";
