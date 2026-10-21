@@ -2,7 +2,8 @@
 {% block content %}
 
     <div class="logo">
-        <h1> <img src="{{ url_for('static', filename ='images.png') }}">Deploy Notion</h1>
+        <h1> <img  class="logo-app"
+            src="{{ url_for('static', filename ='images.png') }}">Deploy Notion</h1>
     </div>
 
 <div class="boas-vindas">
@@ -15,8 +16,7 @@
              <img src="{{ url_for('static', filename = 'anotando.avif') }}">
             
             
-            
-            <form method="post" class="form1">
+            <form method="post" class="form1" autocomplete="off">
                 {{ form1.csrf_token }}
                 {{ form1.hidden_tag() }}
 
@@ -43,18 +43,21 @@
 
                </dialog>
 
+{% with mensagens = get_flashed_messages(with_categories=true) %}
+    {% for categoria, mensagem in mensagens %}
+        {% if categoria == "erro" %}
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const dialogo = document.getElementById("dialogo-erro");
+                    const mensagemElemento = document.getElementById("mensagem-erro");
 
-                {% if erro1 or erro2 %}
-                  <script>
-                  const dialogo = document.getElementById('dialogo-erro');
-                  const mensagem = document.getElementById('mensagem-erro');
-
-                  mensagem.textContent = "{{ erro1 or erro2 }}";
-
-                  dialogo.showModal();
-                  </script>
-                {% endif %}
-                
+                    mensagemElemento.textContent = {{ mensagem | tojson }};
+                    dialogo.showModal();
+                });
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endwith %}
 
                 {{ form1.enviar(class="cadastro-botão")}}
                 <p>já tem uma conta? 
@@ -62,7 +65,7 @@
             </form>
             
 
-            <form method="post" class="form2">
+            <form method="post" class="form2" autocomplete="off">
                 {{ form2.csrf_token }}
                 {{ form2.hidden_tag() }}
 

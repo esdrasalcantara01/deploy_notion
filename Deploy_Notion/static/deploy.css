@@ -1,5 +1,5 @@
 body {
-    background-color: red;
+    background-color: rgba(76, 103, 143, 0.945);
     margin: 0;
 }
 
@@ -28,8 +28,7 @@ h1, h2 {
 .logo h1 {
     padding: 5px;
     margin-bottom: 5px;
-    transform: scale(1.5);
-    
+    transform: scale(1.5);    
 }
 
 .boas-vindas {
@@ -55,6 +54,7 @@ h1, h2 {
  z-index: 2;
  transition: 0.5s;
  object-fit: cover;
+ float: right;
 }
 
 
@@ -162,6 +162,7 @@ summary {
     background-color: #3b6099;
     border-radius: 5px;
     padding: 2px;
+    cursor: pointer;
 }
 
 
@@ -248,7 +249,7 @@ dialog .sair {
 
 
 dialog a {
-    color: red;
+    color: rgba(253, 3, 3, 0.829);
     text-decoration: none;
 }
 
@@ -273,7 +274,7 @@ dialog a:hover {
 form .título {
     width: 99%;
     height: 50px;
-    background-color: red;
+    background-color: transparent;
     border-top: 0;
     border-left: 0;
     border-right: 0;
@@ -285,12 +286,18 @@ form .título {
 
 form .título::placeholder {
   font-size: 40px;
-  color: rgba(122, 122, 129, 0.548);
+  color: rgba(44, 60, 85, 0.945);
+}
+
+
+form .texto::placeholder {
+  font-size: 20px;
+  color: rgba(44, 60, 85, 0.945);
 }
 
 
 textarea {
-    background-color: red;
+    background-color: transparent;
     border: none;
     outline: none;
     resize: none;
@@ -410,8 +417,8 @@ textarea {
 }
 
 
+
 @media screen and (max-width: 600px) {
-    
 
 .logo {
     display: flex;
@@ -494,5 +501,108 @@ textarea {
     cursor: pointer;
 }
 
+}
+
+
+@media screen and (max-width: 320px), 
+       screen and (min-width: 375px) 
+       and (max-width: 425px) {
+  
+  .cadastro {
+    position: relative;
+    right: 80px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    width: 315px;
+    color: whitesmoke;
+    overflow: hidden;
+   }
+ 
+   
+
+.cadastro .form1 {
+ position: relative;
+ right: 10px;
+ left: 25px;
+}
+
+
+.cadastro .form2 {
+ position: relative;
+ right: 35px;
+ left: 54px;
+}
+
+
+.cadastro .input_form {
+    border-radius: 5px;
+    width: 250px;
+    height: 30px;
+    border: 2px solid #3b6099;
+}
+
+
+  .cadastro .form1,
+  .cadastro .form2 {
+        transition: transform 0.4s ease;
+    }
+
+
+h1, h2 {
+    color: black;
+    position: relative;
+    padding: 5px;
+    margin-bottom: 5px;
+    transform: scale(0.7);    
+    right: 80px;
+    text-align: center;
+}
+
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    height: 90px;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.logo img {
+    height: 100%;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+
+.logo h1 {
+    position: relative;
+    padding: 5px;
+    margin-bottom: 5px;
+    transform: scale(1.2);    
+    right: 20px;
+}
+
+.boas-vindas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    top: 5%;
+    left: 25%;
+    position: absolute;
+    height: 90%;
+    width: 50%;
+    padding: 20px;
+}
+
+
+   .cadastro img {
+    display: none;
+   }
 
 }

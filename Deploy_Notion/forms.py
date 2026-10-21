@@ -13,7 +13,9 @@ class cadastroForm(FlaskForm):
 
     def salvar(self):
           
-       senha = bcrypt.generate_password_hash(self.senha.data.encode('utf-8'))
+       senha = bcrypt.generate_password_hash(
+            self.senha.data.encode('utf-8')
+         ).decode("utf-8")
        
        user = User.query.filter(User.email == self.email.data).first()
        
@@ -40,11 +42,16 @@ class loginForm(FlaskForm):
 
   def login(self):
      user = User.query.filter_by(nome = self.nome.data).first()
-
+     
      if user:
-        if bcrypt.check_password_hash(user.senha, self.senha.data.encode('utf-8')):
+     
+      if bcrypt.check_password_hash(
+           user.senha, 
+           self.senha.data
+      ):
+
            return user
-        else:
+      else:
            erro = f'senha incorreta!'
            return erro
      else:

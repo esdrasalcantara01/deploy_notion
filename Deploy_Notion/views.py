@@ -1,5 +1,5 @@
 from Deploy_Notion import app, db
-from flask import render_template, url_for, redirect
+from flask import render_template, url_for, redirect, flash
 from Deploy_Notion.forms import cadastroForm, loginForm, User, folhaForm, Folha
 from Deploy_Notion.models import Folha
 from flask_login import login_required, current_user, login_user, logout_user
@@ -9,18 +9,20 @@ from flask_login import login_required, current_user, login_user, logout_user
 def início():
     form1 = cadastroForm()
     form2 = loginForm()
+
     erro1 = None
     erro2 = None
 
     if form1.validate_on_submit():
         user1 = form1.salvar()
-        if isinstance(user1, User):
 
+        if isinstance(user1, User):
          login_user(user1, remember=True)
          return redirect(url_for('dashboard'))
 
-        erro1 = user1
-
+        flash(user1, "erro")
+        return redirect(url_for("início"))
+    
     elif form2.validate_on_submit():
          user = form2.login()
 
@@ -28,7 +30,8 @@ def início():
              login_user(user, remember=True)
              return redirect(url_for('dashboard'))
     
-         erro1 = user
+         flash(user, "erro")
+         return redirect(url_for("início"))
          
 
     return render_template('index.html', 
@@ -41,7 +44,9 @@ def início():
 @app.route('/dashboard', methods=['GET', 'POST'])
 @login_required
 def dashboard():
-    dados = Folha.query.order_by(Folha.id)
+    dados = Folha.query.filter_by(
+        user_id = current_user.id
+    ).order_by(Folha.id)
     anotações = { 'publicações': dados.all() }
 
     

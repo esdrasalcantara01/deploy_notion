@@ -1,121 +1,168 @@
 
-function cadastro (){
+function iniciarAnimacaoLogo() {
+    const logo = document.querySelector(".logo-app");
 
-    const imagem = document.querySelector(".cadastro img");
+    if (!logo) return;
 
-    if (!imagem) return;
-
-    if (window.innerWidth <= 1220){
-    imagem.style.left = "310px";
-    }
-
-
-    else 
-     if (window.innerWidth > 1220){
-     imagem.style.left = "298px";
-    }
-       
-
-    if (window.innerWidth >= 600){
-    imagem.style.left = "230px";
-
-    }
-
+    logo.src = "/static/image.gif";
 }
 
 
-cadastro();
+const formularios = document.querySelectorAll(
+    ".form1, .form2"
+);
 
-window.addEventListener("resize", cadastro);
+formularios.forEach((formulario) => {
+    formulario.addEventListener("submit", () => {
+        if (formulario.checkValidity()) {
+            iniciarAnimacaoLogo();
+        }
+    });
+});
 
 
-function login (){
+function cadastro() {
+    const imagem = document.querySelector(".cadastro img");
+    const form1 = document.querySelector(".cadastro .form1");
+    const form2 = document.querySelector(".cadastro .form2");
 
- document.querySelector(".cadastro img").style.left = "0px";
+    if (!form1 || !form2) return;
+
+    if (window.innerWidth <= 425) {
+        form1.style.transform = "translateX(0)";
+        form2.style.transform = "translateX(0)";
+    }
+
+    if (imagem) {
+       if (window.innerWidth <= 1220) {
+          imagem.style.left = "298px";
+       } 
+}
+
+}
+
+function login() {
+    const imagem = document.querySelector(".cadastro img");
+    const form1 = document.querySelector(".cadastro .form1");
+    const form2 = document.querySelector(".cadastro .form2");
+
+    if (!form1 || !form2) return;
+
+    if (window.innerWidth <= 425) {
+        form1.style.transform = "translateX(-120%)";
+        form2.style.transform = "translateX(-110%)";
+    }
+
+    if (imagem) {
+        imagem.style.left = "0";
+        imagem.style.right = "auto";
+    }
 }
 
 
 function fecharDialogo() {
-    document.getElementById('dialogo-erro').close();
+    const dialogo = document.getElementById("dialogo-erro");
+
+    if (!dialogo || typeof dialogo.close !== "function") return;
+
+    if (dialogo.open) {
+        dialogo.close();
+    }
 }
 
 
-const camposSenha = document.querySelectorAll('.campo-senha');
+// Mostrar e ocultar senha
+const camposSenha = document.querySelectorAll(".campo-senha");
 
-camposSenha.forEach(function(campo) {
+camposSenha.forEach(function (campo) {
+    const senha = campo.querySelector("input");
+    const olho = campo.querySelector(".olho");
 
-    const senha = campo.querySelector('input');
-    const olho = campo.querySelector('.olho');
+    if (!senha || !olho) return;
 
-    olho.addEventListener('click', function() {
-
-        if (senha.type === 'password') {
-            senha.type = 'text';
-        } else {
-            senha.type = 'password';
-        }
-
+    olho.addEventListener("click", function () {
+        senha.type = senha.type === "password"
+            ? "text"
+            : "password";
     });
-
 });
 
 
-const modal = document.querySelector("dialog")
-const closeModal = document.querySelector("dialog button")
+// Modal principal
+const modal = document.querySelector("dialog");
 
-function botão(){
+function botão() {
+    if (!modal || typeof modal.showModal !== "function") return;
 
-modal.showModal()
+    if (!modal.open) {
+        modal.showModal();
+    }
 }
 
-function cancelar(){
-    modal.close()
+function cancelar() {
+    if (!modal || typeof modal.close !== "function") return;
+
+    if (modal.open) {
+        modal.close();
+    }
 }
 
 
+// Modais de exclusão
 const abrir = document.querySelectorAll(".apagar");
 const fechar = document.querySelectorAll(".cancelar_apagar");
 
+abrir.forEach(function (botao) {
+    botao.addEventListener("click", function () {
+        const modalApagar = botao.nextElementSibling;
 
+        if (!modalApagar || modalApagar.tagName !== "DIALOG") return;
+        if (typeof modalApagar.showModal !== "function") return;
 
-abrir.forEach(function(botao) {
+        if (!modalApagar.open) {
+            modalApagar.showModal();
+        }
+    });
+});
 
-    botao.addEventListener('click', function(){
-        const modal_apagar = botao.nextElementSibling;
+fechar.forEach(function (botao) {
+    botao.addEventListener("click", function () {
+        const modalApagar = botao.closest("dialog");
 
-        modal_apagar.showModal();
+        if (!modalApagar || typeof modalApagar.close !== "function") return;
+
+        if (modalApagar.open) {
+            modalApagar.close();
+        }
     });
 });
 
 
-fechar.forEach(function(botao) {
-    
-    botao.addEventListener('click', function(){
-        const modal_apagar = botao.closest('dialog');
-
-        modal_apagar.close();
-    });
-});
-
-
-const textarea = document.querySelector('textarea');
+// Ajustar altura do textarea
+const textarea = document.querySelector("textarea");
 
 function ajustar() {
-    textarea.style.height = 'auto';
-    textarea.style.height = textarea.scrollHeight + 'px';
+    if (!textarea) return;
+
+    textarea.style.height = "auto";
+    textarea.style.height = textarea.scrollHeight + "px";
 }
 
-textarea.addEventListener('input', ajustar);
+if (textarea) {
+    textarea.addEventListener("input", ajustar);
+    ajustar();
+}
 
-ajustar();
 
-
+// Navegação entre os campos de título e texto
 const titulo = document.querySelector('input[name="título"]');
 const texto = document.querySelector('textarea[name="texto"]');
 
-titulo.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault();
-        texto.focus();
-    }
-});
+if (titulo && texto) {
+    titulo.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            texto.focus();
+        }
+    });
+}
