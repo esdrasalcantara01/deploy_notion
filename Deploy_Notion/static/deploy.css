@@ -31,6 +31,7 @@ h1, h2 {
     transform: scale(1.5);    
 }
 
+
 .boas-vindas {
     display: flex;
     flex-direction: column;
@@ -49,17 +50,20 @@ h1, h2 {
 .cadastro img {
  width: 50%;
  height: 100%;
+ border-radius: 10px;
  box-sizing: border-box;
  position: relative;
  z-index: 2;
  transition: 0.5s;
  object-fit: cover;
  float: right;
+ transition: transform 0.4s ease;
 }
 
 
 .cadastro {
     border: 2px solid black;
+    border-radius: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -518,9 +522,7 @@ textarea {
 }
 
 
-@media screen and (max-width: 320px), 
-       screen and (min-width: 375px) 
-       and (max-width: 425px) {
+@media screen and (max-width: 500px) {
   
      .sem_notas {
         width: 60%;
@@ -534,13 +536,13 @@ textarea {
 
   .cadastro {
     position: relative;
-    right: 80px;
+    right: 90px;
     border: 2px solid black;
     display: flex;
     flex-direction: row;
     align-items: center;
     box-sizing: border-box;
-    width: 315px;
+    width: 305px;
     color: whitesmoke;
     overflow: hidden;
    }
@@ -591,8 +593,8 @@ h1, h2 {
     height: 90px;
     justify-content: center;
     text-align: center;
-}
-
+    margin-left: 35px;
+ }
 
 .logo img {
     height: 100%;
@@ -623,9 +625,31 @@ h1, h2 {
     padding: 20px;
 }
 
-
    .cadastro img {
     display: none;
    }
 
+}
+
+
+@media screen and (max-width: 320px) {
+
+ .boas-vindas {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  align-items: center;
+ }
+
+ 
+ .logo {
+    margin-left: 35px;
+ }
+
+
+ .cadastro {
+    position: relative;
+    right: 90px;
+    width: 305px;
+ }
 }

@@ -35,7 +35,7 @@ function cadastro() {
 
     if (imagem) {
        if (window.innerWidth <= 1220) {
-          imagem.style.left = "298px";
+          imagem.style.transform = "translateX(100%)";
        } 
 }
 
@@ -54,9 +54,11 @@ function login() {
     }
 
     if (imagem) {
-        imagem.style.left = "0";
-        imagem.style.right = "auto";
-    }
+       if (window.innerWidth <= 1220) {
+          imagem.style.transform = "translateX(0)";
+       } 
+}
+
 }
 
 
