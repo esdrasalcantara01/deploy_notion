@@ -1,19 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
 
+
+<div class="boas-vindas">
+
+    
     <div class="logo">
         <h1> <img  class="logo-app"
             src="{{ url_for('static', filename ='images.png') }}">Deploy Notion</h1>
     </div>
 
-<div class="boas-vindas">
+
+    <div class="descrição">    
+            <h1>Bem-vindo ao Deploy Notion!!</h1>
+            <h2>Faça suas anotações em um único lugar!</h2>
+    </div>
+
     
-        <h1>Bem-vindo ao Deploy Notion!!</h1>
-        <h2>Faça suas anotações em um único lugar!</h2>
-        <div class="cadastro">
-           
+    <div class="cadastro">       
             
-             <img src="{{ url_for('static', filename = 'anotando.avif') }}">
+            <img src="{{ url_for('static', filename = 'anotando.avif') }}">
             
             
             <form method="post" class="form1" autocomplete="off">

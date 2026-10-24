@@ -1,4 +1,5 @@
 
+
 function iniciarAnimacaoLogo() {
     const logo = document.querySelector(".logo-app");
 
@@ -28,13 +29,13 @@ function cadastro() {
 
     if (!form1 || !form2) return;
 
-    if (window.innerWidth <= 425) {
-        form1.style.transform = "translateX(0)";
-        form2.style.transform = "translateX(0)";
+    if (window.innerWidth <= 500) {
+        form1.style.transform = "translateY(0)";
+        form2.style.transform = "translateY(0)";
     }
 
     if (imagem) {
-       if (window.innerWidth <= 1220) {
+       if (window.innerWidth) {
           imagem.style.transform = "translateX(100%)";
        } 
 }
@@ -48,13 +49,13 @@ function login() {
 
     if (!form1 || !form2) return;
 
-    if (window.innerWidth <= 425) {
-        form1.style.transform = "translateX(-120%)";
-        form2.style.transform = "translateX(-110%)";
+    if (window.innerWidth <= 500) {
+        form1.style.transform = "translateY(-150%)";
+        form2.style.transform = "translateY(-150%)";
     }
 
     if (imagem) {
-       if (window.innerWidth <= 1220) {
+       if (window.innerWidth) {
           imagem.style.transform = "translateX(0)";
        } 
 }
@@ -102,11 +103,14 @@ function botão() {
 }
 
 function cancelar() {
+    alert("viii")
     if (!modal || typeof modal.close !== "function") return;
 
     if (modal.open) {
         modal.close();
+                console.log("Modal fechado:", modal.open);
     }
+
 }
 
 

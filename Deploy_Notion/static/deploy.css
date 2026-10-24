@@ -9,12 +9,31 @@ h1, h2 {
 }
 
 
+.boas-vindas {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    width: 100%;
+}
+
+
 .logo {
     display: flex;
     flex-direction: row;
+    width: 500px;
     height: 100px;
-    justify-content: center;
+    justify-content: space-around;
     text-align: center;
+    transform: scale(120%);
+}
+
+
+.logo h1 {
+    display: flex;
+    align-items: center;
 }
 
 
@@ -25,25 +44,8 @@ h1, h2 {
 }
 
 
-.logo h1 {
-    padding: 5px;
-    margin-bottom: 5px;
-    transform: scale(1.5);    
-}
-
-
-.boas-vindas {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    top: 5%;
-    left: 25%;
-    position: absolute;
-    height: 90%;
-    width: 50%;
-    padding: 20px;
+.logo img, h1 {
+    transform: scale(1.2);
 }
 
 
@@ -52,42 +54,41 @@ h1, h2 {
  height: 100%;
  border-radius: 10px;
  box-sizing: border-box;
- position: relative;
- z-index: 2;
+ position: absolute;
+ left: 0;
+ z-index: 10;
  transition: 0.5s;
  object-fit: cover;
- float: right;
  transition: transform 0.4s ease;
 }
 
 
 .cadastro {
+    position: relative;
     border: 2px solid black;
     border-radius: 10px;
     display: flex;
+    justify-content: space-around;
+    gap: 20px;
     flex-direction: row;
     align-items: center;
     box-sizing: border-box;
-    width: 600px;
+    width: 40%;
+    height: 50%;
     color: whitesmoke;
+    margin-bottom: 50px;
 }
 
 
-.cadastro .form1 {
- position: relative;
- right: 270px;
-}
-
-
-.cadastro .form2 {
- position: relative;
- right: 230px;
+.cadastro .form1, .form2 {
+    flex: 1;
+    padding: 20px;
 }
 
 
 .cadastro .input_form {
     border-radius: 5px;
-    width: 250px;
+    width: 80%;
     height: 30px;
     border: 2px solid #3b6099;
 }
@@ -96,7 +97,7 @@ h1, h2 {
 .cadastro-botão {
     background-color: #3b6099;
     color: black;
-    width: 100%;
+    width: 80%;
     padding: 10px;
     margin: 3px;
     border: none;
@@ -224,11 +225,16 @@ summary {
 
 
 dialog {
+    display: flex;
+    flex-direction: column;
     height: 80px;
-    text-align: center;
     border: 1px;
+    text-align: center;
     border-radius: 5px;
     overflow: hidden;
+    background-color: rgba(79, 106, 150, 0.945);
+    width: 65%;
+    height: 15%;
 }
 
 
@@ -289,15 +295,17 @@ dialog a:hover {
 
 
 form .título {
-    width: 99%;
+    width: 100%;
     height: 50px;
     background-color: transparent;
     border-top: 0;
     border-left: 0;
     border-right: 0;
     border-bottom: 1px solid;
-    font-size: 40px;
+    margin: 3px;
     outline: none;
+    box-sizing: border-box;
+    font-size: 40px;
 }
 
 
@@ -319,6 +327,7 @@ textarea {
     outline: none;
     resize: none;
     box-sizing: border-box;
+    max-width: 100%;
     width: 100%;
     height: 400px;
     font-family: inherit;
@@ -344,9 +353,11 @@ textarea {
 
 
 .folha {   
-    width: 99%;
+    max-width: 100%;
+    width: 100%;
     height: 100vh;
     padding: 2px;
+    padding: 4px;
 }
 
 
@@ -414,6 +425,12 @@ textarea {
 }
 
 
+.apagar_nota {
+    background-color: rgba(79, 106, 150, 0.945);
+    width: 65%;
+    height: 15%;
+}
+
 .apagar_nota button {
     background-color: #3b6099;
     border: 1px solid #2c528a;
@@ -435,83 +452,134 @@ textarea {
 
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1220px) {
 
-.logo {
-    display: flex;
-    flex-direction: row;
-    height: 100px;
-    justify-content: center;
-    text-align: center;
-}
-
-
-.logo img {
-    height: 100%;
-    border-radius: 5px;
-    margin: 5px;
-}
-
-
-.logo h1 {
-    padding: 5px;
-    margin-bottom: 5px;
-    transform: scale(1.5);
-    
-}
-
-
-.boas-vindas {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    top: 5%;
-    left: 5%;
-    position: absolute;
-    height: 90%;
-    width: 50%;
-    padding: 20px;
-}
-    
 
 .cadastro {
+    position: relative;
     border: 2px solid black;
+    border-radius: 10px;
     display: flex;
+    justify-content: space-around;
+    gap: 20px;
     flex-direction: row;
     align-items: center;
     box-sizing: border-box;
-    width: 180%;
-    height: 60%;
+    width: 70%;
+    height: 50%;
     color: whitesmoke;
-}
-
-
-.cadastro .form1 {
- position: relative;
- right: 220px;
-}
-
-
-.cadastro .form2 {
- position: relative;
- right: 200px;
 }
 
 
 .cadastro .input_form {
     border-radius: 5px;
-    width: 200px;
+    width: 100%;
     height: 30px;
     border: 2px solid #3b6099;
+}
+
+
+}
+
+
+@media screen and (max-width: 560px) {
+
+
+.cadastro {
+    position: relative;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    width: 90%;
+    height: 50%;
+    color: whitesmoke;
+}
+
+
+.cadastro .input_form {
+    border-radius: 5px;
+    width: 100%;
+    height: 30px;
+    border: 2px solid #3b6099;
+}
+
+
+.cadastro .form1, .form2 {
+    flex: 1;
+    padding: 15px;
+}
+
+
+.logo {
+    transform: scale(100%);
+}
+
+
+}
+
+
+@media screen and (max-width: 500px) {
+  
+.boas-vindas {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+.cadastro {
+    position: relative;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    height: 50%;
+    color: whitesmoke;
+    transform: scale(1);
+    overflow: hidden;
+    gap: 50px;
+    
+}
+
+
+.cadastro img {
+    display: none;
+}
+
+
+.cadastro .form1 {
+    flex: 0 0 600px;
+    box-sizing: border-box;
+}
+
+
+.cadastro .form2 {
+    flex: 0 0 400px;
+    box-sizing: border-box;
+}
+
+
+.cadastro .input_form {
+    border-radius: 5px;
+    width: 100%;
+    height: 30px;
+    border: 2px solid #3b6099;
+    
 }
 
 
 .cadastro-botão {
     background-color: #3b6099;
     color: black;
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin: 3px;
     border: none;
@@ -519,82 +587,33 @@ textarea {
     cursor: pointer;
 }
 
-}
 
-
-@media screen and (max-width: 500px) {
-  
-     .sem_notas {
-        width: 60%;
-    }
-
-       
-    .sem_notas h1 {
-        position: relative;
-        left: 10px;
-    }
-
-  .cadastro {
-    position: relative;
-    right: 90px;
-    border: 2px solid black;
+.descrição {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    box-sizing: border-box;
-    width: 305px;
-    color: whitesmoke;
-    overflow: hidden;
-   }
- 
-   
-.cadastro .form1 {
- position: relative;
- right: 10px;
- left: 25px;
-}
-
-
-.cadastro .form2 {
- position: relative;
- right: 35px;
- left: 54px;
-}
-
-
-.cadastro .input_form {
-    border-radius: 5px;
-    width: 250px;
-    height: 30px;
-    border: 2px solid #3b6099;
-}
-
-
-  .cadastro .form1,
-  .cadastro .form2 {
-        transition: transform 0.4s ease;
-    }
-
-
-h1, h2 {
-    color: black;
-    position: relative;
-    padding: 5px;
-    margin-bottom: 5px;
-    transform: scale(0.7);    
-    right: 80px;
     text-align: center;
+    width: 90%;
+    font-size: 65%;
 }
 
 
 .logo {
     display: flex;
     flex-direction: row;
-    height: 90px;
+    width: 100%;
+    height: 100px;
     justify-content: center;
     text-align: center;
-    margin-left: 35px;
- }
+    transform: scale(90%);
+}
+
+
+.logo h1 {
+    display: flex;
+    align-items: center;
+}
+
 
 .logo img {
     height: 100%;
@@ -603,31 +622,10 @@ h1, h2 {
 }
 
 
-.logo h1 {
-    position: relative;
-    padding: 5px;
-    margin-bottom: 5px;
-    transform: scale(1.2);    
-    right: 20px;
+.logo img, h1 {
+    transform: scale(1.2);
 }
 
-.boas-vindas {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    top: 5%;
-    left: 25%;
-    position: absolute;
-    height: 90%;
-    width: 50%;
-    padding: 20px;
-}
-
-   .cadastro img {
-    display: none;
-   }
 
 }
 
@@ -639,17 +637,79 @@ h1, h2 {
   flex-direction: column;
   text-align: start;
   align-items: center;
+  max-width: 100%;
+  width: 130%;
+  height: 100vh;
+  justify-content: space-around;
  }
 
  
- .logo {
-    margin-left: 35px;
- }
+.logo {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100px;
+    justify-content: space-around;
+    gap: 15px;
+    text-align: center;
+    transform: scale(90%);
+}
 
 
- .cadastro {
-    position: relative;
-    right: 90px;
-    width: 305px;
+.logo h1 {
+    display: flex;
+    align-items: center;
+}
+
+
+.logo img {
+    height: 100%;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+
+.logo img, h1 {
+    transform: scale(1.2);
+}
+
+
+.cadastro .form1 {
+    flex: 0 0 600px;
+    box-sizing: border-box;
+}
+
+
+.cadastro .form2 {
+    flex: 0 0 400px;
+    box-sizing: border-box;
+}
+
+
+.cadastro .input_form {
+    border-radius: 5px;
+    width: 100%;
+    height: 30px;
+    border: 2px solid #3b6099;
+    
+}
+
+
+.descrição {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 80%;
+    font-size: 55%;
+}
+
+
+.cadastro {
+    display: flex;
+    width: 100%;
+    transform: scale(0.8);
+    
  }
+
 }
